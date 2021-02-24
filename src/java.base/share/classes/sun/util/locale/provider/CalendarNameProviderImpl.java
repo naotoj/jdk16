@@ -140,7 +140,8 @@ public class CalendarNameProviderImpl extends CalendarNameProvider implements Av
         if (style == ALL_STYLES) {
             names = getDisplayNamesImpl(calendarType, field, SHORT_FORMAT, locale, false);
             for (int st : REST_OF_STYLES) {
-                names.putAll(getDisplayNamesImpl(calendarType, field, st, locale, false));
+//                names.putAll(getDisplayNamesImpl(calendarType, field, st, locale, false));
+                getDisplayNamesImpl(calendarType, field, st, locale, false).forEach(names::putIfAbsent);
             }
         } else {
             // specific style
